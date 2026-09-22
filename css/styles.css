@@ -103,7 +103,7 @@ body {
 
 
 .skill-badge {
-    background-color: #b6cde4;
+    background-color: #f1f5f9; /* Un gris/azul muy claro y neutro */
     color: var(--primary-color);
     padding: 0.6rem 1rem;
     border-radius: 8px;
@@ -124,20 +124,21 @@ body {
 
 
 .project-card {
-    background: #f8fafc;
+    background-color: var(--card-bg);
     border: 1px solid #e2e8f0;
     border-left: 4px solid var(--accent-color);
-    padding: 1.25rem;
-    border-radius: 8px;
+    padding: 1.5rem;
+    border-radius: 12px; /* Ligeramente más redondo */
     transition: var(--transition-smooth);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra muy sutil por defecto */
 }
 
 
 
 .project-card h4 {
     color: var(--primary-color);
-    font-size: 1.1rem;
-    margin-bottom: 0.4rem;
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
 }
 
 .project-tech {
@@ -158,19 +159,19 @@ body {
 
 
 .project-card:hover {
-    /* Efecto de levitación vertical */
     transform: translateY(-6px);
-    background-color: #ffffff;
     box-shadow: var(--shadow-hover);
-    border-color: #cbd5e1;
+    border-color: var(--accent-hover);
     border-left-color: var(--accent-hover);
+    /* Eliminamos el background blanco forzado para no romper el modo oscuro */
 }
 
 .skill-badge:hover {
     background-color: var(--accent-color);
     color: #ffffff;
-    transform: translateY(+8px);
-    box-shadow: 0 14px 12px rgba(2, 199, 2, 0.31);
+    transform: translateY(-4px); /* Negativo para que flote hacia arriba */
+    box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.3); /* Sombra azul coherente */
+    border-color: var(--accent-color);
 }
 
 
@@ -230,5 +231,37 @@ body {
 
         --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
         --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.project-card p {
+    color: var(--text-secondary); /* Asegura que el texto descriptivo se lea bien */
+    font-size: 0.95rem;
+}
+
+/* Modo Oscuro Automático */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        --card-bg: #1e293b;
+
+        --primary-color: #f8fafc;
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --accent-color: #38bdf8;
+        --accent-hover: #0ea5e9;
+
+        --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+        --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Sobrescribir colores estáticos para las tarjetas en modo oscuro */
+    .project-card, .skill-badge {
+        background-color: #334155; 
+        border-color: #475569;
+    }
+    
+    .skill-badge {
+        color: #e2e8f0;
     }
 }
